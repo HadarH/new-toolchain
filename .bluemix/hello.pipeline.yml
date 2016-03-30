@@ -1,0 +1,27 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: master
+    url: ${GIT_REPO_URL}
+    token: ${GIT_REPO_TOKEN}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |
+      #!/bin/bash
+      # Push app
+      export CF_APP_NAME="test-$CF_APP"
+      cf push "${CF_APP_NAME}"
+      # View logs
+      #cf logs "${CF_APP_NAME}" --recent
