@@ -5,67 +5,37 @@
     "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
     "type": "object",
     "properties": {
-        "qa-region": {
+        "region": {
             "description": "The bluemix region",
             "type": "string"
         },
-        "qa-organization": {
+        "organization": {
             "description": "The bluemix org",
             "type": "string"
         },
-       "qa-space": {
+       "space": {
             "description": "The bluemix space",
-            "type": "string"
-        },
-        "prod-region": {
-            "description": "The bluemix region",
-            "type": "string"
-        },
-        "prod-organization": {
-            "description": "The bluemix org",
-            "type": "string"
-        },
-       "prod-space": {
-            "description": "The bluemix space",
-            "type": "string"
-        },
-        "orders-app-name": {
-            "description": "orders app name",
             "type": "string"
         },
        "catalog-app-name": {
             "description": "catalog app name",
             "type": "string"
-        },
-       "ui-app-name": {
-            "description": "ui app name",
-            "type": "string"
         }
     },
-    "required": ["qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "required": ["region", "organization", "space", "catalog-app-name"],
     "form": [
        {
           "type": "validator",
           "url": "https://devops.stage1.ng.bluemix.net/develop/setup/bm-helper/helper.html"
        },        
-       {
-          "type": "text",
-          "readonly": true,
-          "title": "Orders App Name",
-          "key": "orders-app-name"
-        },
+       
         {
           "type": "text",
           "readonly": true,
           "title": "Catalog App Name",
           "key": "catalog-app-name"
         },
-        {
-          "type": "text",
-          "readonly": true,
-          "title": "UI App Name",
-          "key": "ui-app-name"
-        },
+    
         {
             "type": "table",
             "columnCount": 4,
@@ -89,36 +59,19 @@
                 },
                 {
                   "type": "label",
-                  "title": "Test Stage"
+                  "title": "Stage"
                 },
                 {
                   "type": "select",
-                  "key": "qa-region"
+                  "key": "region"
                 },
                 {
                   "type": "select",
-                  "key": "qa-organization"
+                  "key": "organization"
                 },
                 {
                   "type": "select",
-                  "key": "qa-space",
-                  "readonly": false
-                },
-                {
-                  "type": "label",
-                  "title": "Prod Stage"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-region"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-space",
+                  "key": "space",
                   "readonly": false
                 }
             ]
