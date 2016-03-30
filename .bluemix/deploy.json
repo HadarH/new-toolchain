@@ -17,8 +17,8 @@
             "description": "The bluemix space",
             "type": "string"
         },
-       "catalog-app-name": {
-            "description": "catalog app name",
+       "hello-app-name": {
+            "description": "hello app name",
             "type": "string"
         }
     },
