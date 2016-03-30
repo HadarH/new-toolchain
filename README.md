@@ -1,5 +1,5 @@
-#Cloud-native toolchain for microservices
-## Two-staged pipeline variant
+#Simple toolchain for Hello World
+## Single stage pipeline
 
 Get started with this sample Hello World app that uses a DevOps toolchain that is preconfigured for continuous delivery, source control,  issue tracking, and online editing. 
 
