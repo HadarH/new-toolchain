@@ -9,11 +9,11 @@ required:
 
 
 # Github repos
-catalog-api-repo:
+hello-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.catalog-api-repo_name}}"
-    repo_url: "{{github.parameters.catalog-api-repo_url}}"
+    repo_name: "{{github.parameters.hello-repo_name}}"
+    repo_url: "{{github.parameters.hello-repo_url}}"
     type: clone
     has_issues: true
   hidden: [form, description]
@@ -22,22 +22,19 @@ catalog-api-repo:
 # Pipelines
 
 
-catalog-api-build:
+hello-build:
   service_id: pipeline
   parameters:
-    name: "catalog-api-{{name}}"
-    metadata: catalog-api.pipeline.yml
+    name: "hello-{{name}}"
+    metadata: hello.pipeline.yml
     env:
-      GIT_REPO_URL: ${catalog-api-repo.parameters.repo-url}
-      SAUCE_USER: "{{test.parameters.username}}"
-      API_KEY: "{{test.parameters.key}}"
-      CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-      QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-      QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-      QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-      PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-      PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-      PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      GIT_REPO_URL: ${hello-repo.parameters.repo-url}
+   
+      CF_APP_NAME: "{{deploy.parameters.hello-name}}"
+      SPACE_NAME: "{{deploy.parameters.space}}"
+      QORG_NAME: "{{deploy.parameters.organization}}"
+      REGION_ID: "{{deploy.parameters.region}}"
+    
   hidden: [form, description]
 
 
@@ -51,21 +48,17 @@ deploy:
   schema: deploy.json
   service-category: pipeline
   parameters:
-    qa-region: "ibm:yp:us-south"
-    prod-region: "ibm:yp:us-south"
-    qa-organization: "{{organization}}"
-    prod-organization: "{{organization}}"
-    qa-space: qa
-    prod-space: prod
-    orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
-    catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
-    ui-app-name: "{{ui-repo.parameters.repo_name}}"
+    region: "ibm:yp:us-south"
+    organization: "{{organization}}"
+    space: dev
+    hello-app-name: "{{hello-repo.parameters.repo_name}}"
+
 
 #Github
 github:
   schema: github.json
   service-category: githubpublic
   parameters:
-    catalog-api-repo_name: "catalog-api-{{name}}"
-    catalog-api-repo_url: https://github.com/HadarH/hello-world
+    hello-repo_name: "hello-{{name}}"
+    hello-repo_url: https://github.com/HadarH/hello-world
 
