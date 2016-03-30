@@ -22,7 +22,7 @@
             "type": "string"
         }
     },
-    "required": ["region", "organization", "space", "catalog-app-name"],
+    "required": ["region", "organization", "space", "hello-app-name"],
     "form": [
        {
           "type": "validator",
@@ -32,8 +32,8 @@
         {
           "type": "text",
           "readonly": true,
-          "title": "Catalog App Name",
-          "key": "catalog-app-name"
+          "title": "Hello App Name",
+          "key": "hello-app-name"
         },
     
         {
