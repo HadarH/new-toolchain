@@ -32,7 +32,7 @@ hello-build:
    
       CF_APP_NAME: "{{deploy.parameters.hello-name}}"
       SPACE_NAME: "{{deploy.parameters.space}}"
-      QORG_NAME: "{{deploy.parameters.organization}}"
+      ORG_NAME: "{{deploy.parameters.organization}}"
       REGION_ID: "{{deploy.parameters.region}}"
     
   hidden: [form, description]
